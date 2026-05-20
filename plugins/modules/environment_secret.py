@@ -115,7 +115,6 @@ def get_current_state(client, module):
         return None
 
 
-
 def needs_update(current, desired):
     """Compare current state against desired params and return True if an update is needed."""
     if current is None:
@@ -153,20 +152,12 @@ def main():
 
                 required=True,
 
-
-
-
-
             ),
 
             key_id=dict(
                 type="str",
 
                 required=True,
-
-
-
-
 
             ),
 
@@ -199,7 +190,6 @@ def main():
 
                     pass
 
-
             elif needs_update(current, desired):
                 # Resource exists but needs updating
                 result["changed"] = True
@@ -218,7 +208,6 @@ def main():
                     )
                     result.update(response if isinstance(response, dict) else {})
 
-
             else:
                 # Resource exists and is up-to-date
 
@@ -227,7 +216,6 @@ def main():
                 result["created_at"] = current.get("created_at")
 
                 result["updated_at"] = current.get("updated_at")
-
 
         elif state == "absent":
             if current is not None:
@@ -242,7 +230,6 @@ def main():
                         "{id}", str(identifier)
                     )
                     client.delete(path)
-
 
     except ClientError as e:
         module.fail_json(msg=str(e), **result)

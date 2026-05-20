@@ -179,33 +179,10 @@ def fetch_single(client, identifier):
     return None
 
 
-
 def fetch_list(client, module):
     """List deployment resources with optional filtering and pagination."""
 
     params = {}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     page = module.params.get("page")
     page_size = module.params.get("page_size")
@@ -223,31 +200,11 @@ def fetch_list(client, module):
         return client.get_paginated("/repos/{owner}/{repo}/deployments", params=params)
 
 
-
 def main():
     spec = auth_argument_spec()
     spec.update(
         dict(
             id=dict(type="str", required=False),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             page=dict(type="int", required=False),
             page_size=dict(type="int", required=False),

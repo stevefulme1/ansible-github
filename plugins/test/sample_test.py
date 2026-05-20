@@ -4,15 +4,12 @@
 
 from __future__ import absolute_import, annotations, division, print_function
 
-
 __metaclass__ = type  # pylint: disable=C0103
 
 from typing import TYPE_CHECKING
 
-
 if TYPE_CHECKING:
     from typing import Callable
-
 
 DOCUMENTATION = """
     name: sample_test

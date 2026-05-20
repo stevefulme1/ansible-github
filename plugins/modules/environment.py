@@ -167,7 +167,6 @@ def get_current_state(client, module):
         return None
 
 
-
 def needs_update(current, desired):
     """Compare current state against desired params and return True if an update is needed."""
     if current is None:
@@ -209,36 +208,20 @@ def main():
             deployment_branch_policy=dict(
                 type="dict",
 
-
-
-
-
             ),
 
             prevent_self_review=dict(
                 type="bool",
-
-
-
-
 
             ),
 
             reviewers=dict(
                 type="list",
 
-
-
-
-
             ),
 
             wait_timer=dict(
                 type="int",
-
-
-
-
 
             ),
 
@@ -271,7 +254,6 @@ def main():
 
                     pass
 
-
             elif needs_update(current, desired):
                 # Resource exists but needs updating
                 result["changed"] = True
@@ -289,7 +271,6 @@ def main():
                         data=desired,
                     )
                     result.update(response if isinstance(response, dict) else {})
-
 
             else:
                 # Resource exists and is up-to-date
@@ -312,7 +293,6 @@ def main():
 
                 result["deployment_branch_policy"] = current.get("deployment_branch_policy")
 
-
         elif state == "absent":
             if current is not None:
                 result["changed"] = True
@@ -326,7 +306,6 @@ def main():
                         "{id}", str(identifier)
                     )
                     client.delete(path)
-
 
     except ClientError as e:
         module.fail_json(msg=str(e), **result)

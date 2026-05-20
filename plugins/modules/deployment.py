@@ -278,7 +278,6 @@ def get_current_state(client, module):
         return None
 
 
-
 def needs_update(current, desired):
     """Compare current state against desired params and return True if an update is needed."""
     if current is None:
@@ -337,101 +336,55 @@ def main():
 
                 required=True,
 
-
-
-
-
             ),
 
             auto_merge=dict(
                 type="bool",
 
-
-
-
                 default=True,
-
-
-
 
             ),
 
             description=dict(
                 type="str",
 
-
-
-
                 default="",
-
-
-
 
             ),
 
             environment=dict(
                 type="str",
 
-
-
-
                 default="production",
-
-
-
 
             ),
 
             payload=dict(
                 type="dict",
 
-
-
-
-
             ),
 
             production_environment=dict(
                 type="bool",
-
-
-
-
 
             ),
 
             required_contexts=dict(
                 type="list",
 
-
-
-
-
             ),
 
             task=dict(
                 type="str",
 
-
-
-
                 default="deploy",
-
-
-
 
             ),
 
             transient_environment=dict(
                 type="bool",
 
-
-
-
                 default=False,
-
-
-
 
             ),
 
@@ -468,7 +421,6 @@ def main():
                     )
                     result.update(response if isinstance(response, dict) else {})
 
-
             elif needs_update(current, desired):
                 # Resource exists but needs updating
                 result["changed"] = True
@@ -486,7 +438,6 @@ def main():
                         data=desired,
                     )
                     result.update(response if isinstance(response, dict) else {})
-
 
             else:
                 # Resource exists and is up-to-date
@@ -527,7 +478,6 @@ def main():
 
                 result["performed_via_github_app"] = current.get("performed_via_github_app")
 
-
         elif state == "absent":
             if current is not None:
                 result["changed"] = True
@@ -541,7 +491,6 @@ def main():
                         "{id}", str(identifier)
                     )
                     client.delete(path)
-
 
     except ClientError as e:
         module.fail_json(msg=str(e), **result)

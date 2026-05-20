@@ -215,21 +215,14 @@ def fetch_single(client, identifier):
     return None
 
 
-
 def fetch_list(client, module):
     """List repository_collaborator resources with optional filtering and pagination."""
 
     params = {}
 
-
     name_filter = module.params.get("name")
     if name_filter is not None:
         params["name"] = name_filter
-
-
-
-
-
 
     page = module.params.get("page")
     page_size = module.params.get("page_size")
@@ -247,7 +240,6 @@ def fetch_list(client, module):
         return client.get_paginated("/repos/{owner}/{repo}/collaborators", params=params)
 
 
-
 def main():
     spec = auth_argument_spec()
     spec.update(
@@ -255,9 +247,6 @@ def main():
             id=dict(type="str", required=False),
 
             name=dict(type="str", required=False),
-
-
-
 
             page=dict(type="int", required=False),
             page_size=dict(type="int", required=False),

@@ -62,9 +62,7 @@ class Client:
             "Accept": "application/json",
         }
 
-
         headers["X-API-Key"] = self.module.params["api_key"]
-
 
         return headers
 

@@ -325,7 +325,6 @@ def get_current_state(client, module):
         return None
 
 
-
 def needs_update(current, desired):
     """Compare current state against desired params and return True if an update is needed."""
     if current is None:
@@ -390,121 +389,71 @@ def main():
 
                 required=True,
 
-
-
-
-
             ),
 
             description=dict(
                 type="str",
-
-
-
-
 
             ),
 
             group_id=dict(
                 type="str",
 
-
-
-
-
             ),
 
             maintainers=dict(
                 type="list",
-
-
-
-
 
             ),
 
             notification_setting=dict(
                 type="str",
 
-
                 choices=['notifications_enabled', 'notifications_disabled'],
-
-
-
 
             ),
 
             organization_selection_type=dict(
                 type="str",
 
-
                 choices=['disabled', 'selected', 'all'],
 
-
-
                 default="disabled",
-
-
-
 
             ),
 
             parent_team_id=dict(
                 type="int",
 
-
-
-
-
             ),
 
             permission=dict(
                 type="str",
 
-
                 choices=['pull', 'push', 'admin'],
 
-
-
                 default="pull",
-
-
-
 
             ),
 
             privacy=dict(
                 type="str",
 
-
                 choices=['secret', 'closed'],
-
-
-
 
             ),
 
             repo_names=dict(
                 type="list",
 
-
-
-
-
             ),
 
             sync_to_organizations=dict(
                 type="str",
 
-
                 choices=['all', 'disabled'],
 
-
-
                 default="disabled",
-
-
-
 
             ),
 
@@ -541,7 +490,6 @@ def main():
                     )
                     result.update(response if isinstance(response, dict) else {})
 
-
             elif needs_update(current, desired):
                 # Resource exists but needs updating
                 result["changed"] = True
@@ -559,7 +507,6 @@ def main():
                         data=desired,
                     )
                     result.update(response if isinstance(response, dict) else {})
-
 
             else:
                 # Resource exists and is up-to-date
@@ -608,7 +555,6 @@ def main():
 
                 result["enterprise_id"] = current.get("enterprise_id")
 
-
         elif state == "absent":
             if current is not None:
                 result["changed"] = True
@@ -622,7 +568,6 @@ def main():
                         "{id}", str(identifier)
                     )
                     client.delete(path)
-
 
     except ClientError as e:
         module.fail_json(msg=str(e), **result)
