@@ -26,7 +26,7 @@ options:
     choices: ['present', 'absent']
     default: present
 
-  key_prefix:
+  autolink_prefix:
     description:
       - >-
         This prefix appended by certain characters will generate a link any time it is found in an...
@@ -58,7 +58,7 @@ EXAMPLES = r"""
 - name: Create a autolink
   stevefulme1.github.autolink:
 
-    key_prefix: "example_key_prefix"
+    autolink_prefix: "example_autolink_prefix"
 
     url_template: "example_url_template"
 
@@ -88,7 +88,7 @@ id:
   returned: success
   type: int
 
-key_prefix:
+autolink_prefix:
   description: >-
     The prefix of a key that is linkified.
   returned: success
@@ -163,8 +163,8 @@ def build_payload(module):
     """Build the API request payload from module params."""
     payload = {}
 
-    if module.params.get("key_prefix") is not None:
-        payload["key_prefix"] = module.params["key_prefix"]
+    if module.params.get("autolink_prefix") is not None:
+        payload["autolink_prefix"] = module.params["autolink_prefix"]
 
     if module.params.get("url_template") is not None:
         payload["url_template"] = module.params["url_template"]
@@ -181,7 +181,7 @@ def main():
         dict(
             state=dict(type="str", choices=["present", "absent"], default="present"),
 
-            key_prefix=dict(
+            autolink_prefix=dict(
                 type="str",
 
                 required=True,
@@ -258,7 +258,7 @@ def main():
 
                 result["id"] = current.get("id")
 
-                result["key_prefix"] = current.get("key_prefix")
+                result["autolink_prefix"] = current.get("autolink_prefix")
 
                 result["url_template"] = current.get("url_template")
 

@@ -1,4 +1,3 @@
-
 ---
 # Integration tests for stevefulme1.github.action_runner
 #
@@ -8,7 +7,6 @@
 - name: Set test variables
   ansible.builtin.set_fact:
     test_action_runner_params:
-
 
 # ============================================================
 # CREATE - check mode
@@ -93,11 +91,8 @@
 # UPDATE
 # ============================================================
 
-
-
 # No optional string parameters available for update testing.
 # Update idempotency tests are skipped for this resource.
-
 
 # ============================================================
 # DELETE - check mode
@@ -155,3 +150,4 @@
     that:
       - delete_idempotent is not changed
     fail_msg: "Repeated delete should report changed=false"
+
