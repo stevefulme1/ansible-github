@@ -57,6 +57,7 @@ options:
       - >-
         An array of repository ids that can access the organization secret. You can only provide a list...
     type: list
+    elements: str
 
 extends_documentation_fragment:
   - stevefulme1.github.auth

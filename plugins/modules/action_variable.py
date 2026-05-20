@@ -37,6 +37,7 @@ options:
       - >-
         An array of repository ids that can access the organization variable. You can only provide a...
     type: list
+    elements: str
 
   value:
     description:

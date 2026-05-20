@@ -45,6 +45,7 @@ options:
       - >-
         Determines what events the hook is triggered for.
     type: list
+    elements: str
 
     default: ["push"]
 

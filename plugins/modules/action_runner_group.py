@@ -61,18 +61,21 @@ options:
       - >-
         List of runner IDs to add to the runner group.
     type: list
+    elements: str
 
   selected_repository_ids:
     description:
       - >-
         List of repository IDs that can access the runner group.
     type: list
+    elements: str
 
   selected_workflows:
     description:
       - >-
         List of workflows the runner group should be allowed to run. This setting will be ignored unless...
     type: list
+    elements: str
 
   visibility:
     description:

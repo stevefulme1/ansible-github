@@ -43,6 +43,7 @@ options:
       - >-
         The people or teams that may review jobs that reference the environment. You can list up to six...
     type: list
+    elements: str
 
   wait_timer:
     description:

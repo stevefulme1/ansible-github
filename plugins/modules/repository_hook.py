@@ -39,6 +39,7 @@ options:
       - >-
         Determines a list of events to be added to the list of events that the Hook triggers for.
     type: list
+    elements: str
 
   config:
     description:
@@ -51,6 +52,7 @@ options:
       - >-
         Determines what events the hook is triggered for. This replaces the entire array of events.
     type: list
+    elements: str
 
     default: ["push"]
 
@@ -65,6 +67,7 @@ options:
       - >-
         Determines a list of events to be removed from the list of events that the Hook triggers for.
     type: list
+    elements: str
 
 extends_documentation_fragment:
   - stevefulme1.github.auth

@@ -75,6 +75,7 @@ options:
       - >-
         The status contexts to verify against commit status checks. If you omit this parameter, GitHub...
     type: list
+    elements: str
 
   task:
     description:

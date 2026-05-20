@@ -51,6 +51,7 @@ options:
       - >-
         List GitHub usernames for organization members who will become team maintainers.
     type: list
+    elements: str
 
   notification_setting:
     description:
@@ -99,6 +100,7 @@ options:
       - >-
         The full name (e.g., "organization-name/repository-name") of repositories to add the team to.
     type: list
+    elements: str
 
   sync_to_organizations:
     description:

@@ -31,6 +31,7 @@ options:
       - >-
         The names of the labels to set for the issue. The labels you set replace any existing labels....
     type: list
+    elements: str
 
 extends_documentation_fragment:
   - stevefulme1.github.auth
