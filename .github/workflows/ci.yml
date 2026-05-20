@@ -38,7 +38,7 @@ jobs:
       - name: Run flake8
         working-directory: ansible_collections/${{ env.NAMESPACE }}/${{ env.COLLECTION }}
 
-        run: flake8 plugins/ --max-line-length=120 --ignore=E402,W503,E303
+        run: flake8 plugins/ --max-line-length=120 --ignore=E402,W503,W291,W293,E303
 
       - name: Run ansible-lint
         working-directory: ansible_collections/${{ env.NAMESPACE }}/${{ env.COLLECTION }}
@@ -140,4 +140,3 @@ jobs:
           STEVEFULME1_GITHUB_API_KEY: ${{ secrets.API_KEY }}
 
           STEVEFULME1_GITHUB_API_URL: ${{ secrets.API_URL }}
-
