@@ -284,7 +284,9 @@ def main():
 
 
 
-                default=true,
+
+                default=True,
+
 
 
 
@@ -304,7 +306,9 @@ def main():
 
 
 
+
                 default=["push"],
+
 
 
 

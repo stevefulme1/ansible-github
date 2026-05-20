@@ -90,7 +90,7 @@ EXAMPLES = r"""
 """
 
 RETURN = r"""
-action_runner_groups:
+action_runner-groups:
   description: List of action_runner-group resources matching the query.
   returned: always
   type: list
@@ -292,7 +292,7 @@ def main():
 
     result = dict(
         changed=False,
-        action_runner_groups=[],
+        action_runner-groups=[],
     )
 
     try:
@@ -301,9 +301,9 @@ def main():
 
         if identifier is not None:
             item = fetch_single(client, identifier)
-            result["action_runner_groups"] = [item] if item else []
+            result["action_runner-groups"] = [item] if item else []
         else:
-            result["action_runner_groups"] = fetch_list(client, module)
+            result["action_runner-groups"] = fetch_list(client, module)
 
     except ClientError as e:
         module.fail_json(msg=str(e), **result)

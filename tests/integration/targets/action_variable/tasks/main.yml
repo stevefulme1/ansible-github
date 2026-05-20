@@ -1,3 +1,4 @@
+
 ---
 # Integration tests for stevefulme1.github.action_variable
 #
@@ -7,6 +8,15 @@
 - name: Set test variables
   ansible.builtin.set_fact:
     test_action_variable_params:
+
+
+
+
+
+
+
+
+
 
 # ============================================================
 # CREATE - check mode
@@ -28,7 +38,15 @@
 - name: Verify action_variable was NOT actually created (check mode)
   stevefulme1.github.action_variable_info:
 
+
     name: "{{ test_name | default("test_name_value") }}"
+
+
+
+
+
+
+
 
   register: check_verify
 
@@ -87,11 +105,35 @@
     that:
       - info_result.action_variables | length == 1
 
+
+
+
+
+
+
+
+
     fail_msg: "Created resource does not match expected values"
 
 # ============================================================
 # UPDATE
 # ============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - name: Update action_variable
   stevefulme1.github.action_variable:
@@ -133,6 +175,7 @@
     that:
       - update_idempotent is not changed
     fail_msg: "Repeated update with same params should report changed=false"
+
 
 # ============================================================
 # DELETE - check mode

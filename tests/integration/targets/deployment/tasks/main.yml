@@ -1,3 +1,4 @@
+
 ---
 # Integration tests for stevefulme1.github.deployment
 #
@@ -8,7 +9,26 @@
   ansible.builtin.set_fact:
     test_deployment_params:
 
+
       ref: "{{ test_ref | default("test_ref_value") }}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # ============================================================
 # CREATE - check mode
@@ -29,6 +49,24 @@
 
 - name: Verify deployment was NOT actually created (check mode)
   stevefulme1.github.deployment_info:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   register: check_verify
 
@@ -87,13 +125,57 @@
     that:
       - info_result.deployments | length == 1
 
+
       - info_result.deployments[0].ref == test_deployment_params.ref
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     fail_msg: "Created resource does not match expected values"
 
 # ============================================================
 # UPDATE
 # ============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - name: Update deployment
   stevefulme1.github.deployment:
@@ -135,6 +217,7 @@
     that:
       - update_idempotent is not changed
     fail_msg: "Repeated update with same params should report changed=false"
+
 
 # ============================================================
 # DELETE - check mode

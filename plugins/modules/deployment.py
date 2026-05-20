@@ -446,7 +446,9 @@ def main():
 
 
 
-                default=true,
+
+                default=True,
+
 
 
 
@@ -457,7 +459,9 @@ def main():
 
 
 
+
                 default="",
+
 
 
 
@@ -468,7 +472,9 @@ def main():
 
 
 
+
                 default="production",
+
 
 
 
@@ -506,7 +512,9 @@ def main():
 
 
 
+
                 default="deploy",
+
 
 
 
@@ -517,7 +525,9 @@ def main():
 
 
 
-                default=false,
+
+                default=False,
+
 
 
 

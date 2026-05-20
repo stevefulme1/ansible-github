@@ -1,3 +1,4 @@
+
 ---
 # Integration tests for stevefulme1.github.action_secret
 #
@@ -8,11 +9,20 @@
   ansible.builtin.set_fact:
     test_action_secret_params:
 
+
       encrypted_value: "{{ test_encrypted_value | default("test_encrypted_value_value") }}"
+
+
 
       key_id: "{{ test_key_id | default("test_key_id_value") }}"
 
+
+
       visibility: "{{ test_visibility | default("test_visibility_value") }}"
+
+
+
+
 
 # ============================================================
 # CREATE - check mode
@@ -33,6 +43,14 @@
 
 - name: Verify action_secret was NOT actually created (check mode)
   stevefulme1.github.action_secret_info:
+
+
+
+
+
+
+
+
 
   register: check_verify
 
@@ -91,11 +109,19 @@
     that:
       - info_result.action_secrets | length == 1
 
+
       - info_result.action_secrets[0].encrypted_value == test_action_secret_params.encrypted_value
+
+
 
       - info_result.action_secrets[0].key_id == test_action_secret_params.key_id
 
+
+
       - info_result.action_secrets[0].visibility == test_action_secret_params.visibility
+
+
+
 
     fail_msg: "Created resource does not match expected values"
 
@@ -103,8 +129,19 @@
 # UPDATE
 # ============================================================
 
+
+
+
+
+
+
+
+
+
+
 # No optional string parameters available for update testing.
 # Update idempotency tests are skipped for this resource.
+
 
 # ============================================================
 # DELETE - check mode

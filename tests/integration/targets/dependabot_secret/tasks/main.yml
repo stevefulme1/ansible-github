@@ -1,3 +1,4 @@
+
 ---
 # Integration tests for stevefulme1.github.dependabot_secret
 #
@@ -8,7 +9,16 @@
   ansible.builtin.set_fact:
     test_dependabot_secret_params:
 
+
       visibility: "{{ test_visibility | default("test_visibility_value") }}"
+
+
+
+
+
+
+
+
 
 # ============================================================
 # CREATE - check mode
@@ -29,6 +39,14 @@
 
 - name: Verify dependabot_secret was NOT actually created (check mode)
   stevefulme1.github.dependabot_secret_info:
+
+
+
+
+
+
+
+
 
   register: check_verify
 
@@ -87,13 +105,35 @@
     that:
       - info_result.dependabot_secrets | length == 1
 
+
       - info_result.dependabot_secrets[0].visibility == test_dependabot_secret_params.visibility
+
+
+
+
+
+
+
 
     fail_msg: "Created resource does not match expected values"
 
 # ============================================================
 # UPDATE
 # ============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - name: Update dependabot_secret
   stevefulme1.github.dependabot_secret:
@@ -131,6 +171,7 @@
     that:
       - update_idempotent is not changed
     fail_msg: "Repeated update with same params should report changed=false"
+
 
 # ============================================================
 # DELETE - check mode

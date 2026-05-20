@@ -1,3 +1,4 @@
+
 ---
 # Integration tests for stevefulme1.github.team
 #
@@ -8,7 +9,30 @@
   ansible.builtin.set_fact:
     test_team_params:
 
+
       name: "{{ test_name | default("test_name_value") }}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # ============================================================
 # CREATE - check mode
@@ -30,7 +54,29 @@
 - name: Verify team was NOT actually created (check mode)
   stevefulme1.github.team_info:
 
+
     name: "{{ test_name | default("test_name_value") }}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   register: check_verify
 
@@ -89,13 +135,73 @@
     that:
       - info_result.teams | length == 1
 
+
       - info_result.teams[0].name == test_team_params.name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     fail_msg: "Created resource does not match expected values"
 
 # ============================================================
 # UPDATE
 # ============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - name: Update team
   stevefulme1.github.team:
@@ -153,6 +259,7 @@
     that:
       - update_idempotent is not changed
     fail_msg: "Repeated update with same params should report changed=false"
+
 
 # ============================================================
 # DELETE - check mode

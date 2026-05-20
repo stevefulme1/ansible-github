@@ -559,7 +559,9 @@ def main():
                 choices=['disabled', 'selected', 'all'],
 
 
+
                 default="disabled",
+
 
 
 
@@ -581,7 +583,9 @@ def main():
                 choices=['pull', 'push', 'admin'],
 
 
+
                 default="pull",
+
 
 
 
@@ -614,7 +618,9 @@ def main():
                 choices=['all', 'disabled'],
 
 
+
                 default="disabled",
+
 
 
 

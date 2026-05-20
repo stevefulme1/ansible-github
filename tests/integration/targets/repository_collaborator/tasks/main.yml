@@ -1,3 +1,4 @@
+
 ---
 # Integration tests for stevefulme1.github.repository_collaborator
 #
@@ -7,6 +8,9 @@
 - name: Set test variables
   ansible.builtin.set_fact:
     test_repository_collaborator_params:
+
+
+
 
 # ============================================================
 # CREATE - check mode
@@ -27,6 +31,8 @@
 
 - name: Verify repository_collaborator was NOT actually created (check mode)
   stevefulme1.github.repository_collaborator_info:
+
+
 
   register: check_verify
 
@@ -85,11 +91,19 @@
     that:
       - info_result.repository_collaborators | length == 1
 
+
+
     fail_msg: "Created resource does not match expected values"
 
 # ============================================================
 # UPDATE
 # ============================================================
+
+
+
+
+
+
 
 - name: Update repository_collaborator
   stevefulme1.github.repository_collaborator:
@@ -123,6 +137,7 @@
     that:
       - update_idempotent is not changed
     fail_msg: "Repeated update with same params should report changed=false"
+
 
 # ============================================================
 # DELETE - check mode

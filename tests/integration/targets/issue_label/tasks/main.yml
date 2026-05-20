@@ -1,3 +1,4 @@
+
 ---
 # Integration tests for stevefulme1.github.issue_label
 #
@@ -7,6 +8,9 @@
 - name: Set test variables
   ansible.builtin.set_fact:
     test_issue_label_params:
+
+
+
 
 # ============================================================
 # CREATE - check mode
@@ -27,6 +31,8 @@
 
 - name: Verify issue_label was NOT actually created (check mode)
   stevefulme1.github.issue_label_info:
+
+
 
   register: check_verify
 
@@ -85,14 +91,21 @@
     that:
       - info_result.issue_labels | length == 1
 
+
+
     fail_msg: "Created resource does not match expected values"
 
 # ============================================================
 # UPDATE
 # ============================================================
 
+
+
+
+
 # No optional string parameters available for update testing.
 # Update idempotency tests are skipped for this resource.
+
 
 # ============================================================
 # DELETE - check mode

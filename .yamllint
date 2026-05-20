@@ -1,8 +1,5 @@
 ---
 extends: default
-ignore: |
-  tests/
-  .github/
 rules:
   line-length:
     max: 160
@@ -17,5 +14,3 @@ rules:
   indentation:
     spaces: 2
     indent-sequences: true
-  empty-lines:
-    max: 2

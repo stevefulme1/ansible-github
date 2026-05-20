@@ -1,3 +1,4 @@
+
 ---
 # Integration tests for stevefulme1.github.repository_hook
 #
@@ -7,6 +8,19 @@
 - name: Set test variables
   ansible.builtin.set_fact:
     test_repository_hook_params:
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # ============================================================
 # CREATE - check mode
@@ -28,7 +42,19 @@
 - name: Verify repository_hook was NOT actually created (check mode)
   stevefulme1.github.repository_hook_info:
 
+
+
+
+
+
+
+
+
+
     name: "{{ test_name | default("test_name_value") }}"
+
+
+
 
   register: check_verify
 
@@ -87,11 +113,39 @@
     that:
       - info_result.repository_hooks | length == 1
 
+
+
+
+
+
+
+
+
+
+
+
+
     fail_msg: "Created resource does not match expected values"
 
 # ============================================================
 # UPDATE
 # ============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - name: Update repository_hook
   stevefulme1.github.repository_hook:
@@ -125,6 +179,7 @@
     that:
       - update_idempotent is not changed
     fail_msg: "Repeated update with same params should report changed=false"
+
 
 # ============================================================
 # DELETE - check mode
