@@ -32,11 +32,6 @@ options:
     type: str
     required: false
 
-
-
-
-
-
   page:
     description:
       - Page number for paginated results.
@@ -63,12 +58,10 @@ EXAMPLES = r"""
   stevefulme1.github.environment_variable_info:
   register: result
 
-
 - name: List environment_variable resources filtered by name
   stevefulme1.github.environment_variable_info:
     name: "my_environment_variable"
   register: result
-
 
 - name: List environment_variable resources with pagination
   stevefulme1.github.environment_variable_info:
@@ -90,25 +83,20 @@ environment_variables:
         The name of the variable.
       type: str
 
-
     value:
       description: >-
         The value of the variable.
       type: str
-
 
     created_at:
       description: >-
         The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
       type: str
 
-
     updated_at:
       description: >-
         The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
       type: str
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

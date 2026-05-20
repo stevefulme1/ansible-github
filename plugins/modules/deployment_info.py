@@ -26,25 +26,6 @@ options:
     type: str
     required: false
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   page:
     description:
       - Page number for paginated results.
@@ -71,8 +52,6 @@ EXAMPLES = r"""
   stevefulme1.github.deployment_info:
   register: result
 
-
-
 - name: List deployment resources with pagination
   stevefulme1.github.deployment_info:
     page: 1
@@ -90,112 +69,93 @@ deployments:
 
     url:
       description: >-
-        
-      type: str
 
+      type: str
 
     id:
       description: >-
         Unique identifier of the deployment
       type: int
 
-
     node_id:
       description: >-
-        
-      type: str
 
+      type: str
 
     sha:
       description: >-
-        
-      type: str
 
+      type: str
 
     ref:
       description: >-
         The ref to deploy. This can be a branch, tag, or sha.
       type: str
 
-
     task:
       description: >-
         Parameter to specify a task to execute
       type: str
 
-
     payload:
       description: >-
-        
-      type: dict
 
+      type: dict
 
     original_environment:
       description: >-
-        
-      type: str
 
+      type: str
 
     environment:
       description: >-
         Name for the target deployment environment.
       type: str
 
-
     description:
       description: >-
-        
-      type: str
 
+      type: str
 
     creator:
       description: >-
         A GitHub user.
       type: dict
 
-
     created_at:
       description: >-
-        
-      type: str
 
+      type: str
 
     updated_at:
       description: >-
-        
-      type: str
 
+      type: str
 
     statuses_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     repository_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     transient_environment:
       description: >-
         Specifies if the given environment is will no longer exist at some point in the future. Default: false.
       type: bool
 
-
     production_environment:
       description: >-
         Specifies if the given environment is one that end-users directly interact with. Default: false.
       type: bool
 
-
     performed_via_github_app:
       description: >-
         GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and...
       type: dict
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

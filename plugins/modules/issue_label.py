@@ -32,62 +32,45 @@ options:
         The names of the labels to set for the issue. The labels you set replace any existing labels....
     type: list
 
-
-
-
-
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
 - name: Create a issue_label
   stevefulme1.github.issue_label:
 
-
-
     state: present
   # API: POST /repos/{owner}/{repo}/issues/{issue_number}/labels
-
-
 
 - name: Update a issue_label
   stevefulme1.github.issue_label:
     id: "existing_id"
 
-
     labels: "updated_labels"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a issue_label
   stevefulme1.github.issue_label:
     id: "existing_id"
     state: absent
   # API: DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
-
 """
 
 RETURN = r"""
-
 id:
   description: >-
     Unique identifier for the label.
   returned: success
   type: int
 
-
 node_id:
   description: >-
-    
+
   returned: success
   type: str
-
 
 url:
   description: >-
@@ -95,13 +78,11 @@ url:
   returned: success
   type: str
 
-
 name:
   description: >-
     The name of the label.
   returned: success
   type: str
-
 
 description:
   description: >-
@@ -109,21 +90,17 @@ description:
   returned: success
   type: str
 
-
 color:
   description: >-
     6-character hex code, without the leading , identifying the color
   returned: success
   type: str
 
-
 default:
   description: >-
     Whether this label comes by default in a new repository.
   returned: success
   type: bool
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

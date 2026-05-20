@@ -34,21 +34,13 @@ options:
 
     required: true
 
-
-
-
-
   allows_public_repositories:
     description:
       - >-
         Whether the runner group can be used by public repositories.
     type: bool
 
-
-
     default: false
-
-
 
   network_configuration_id:
     description:
@@ -56,21 +48,13 @@ options:
         The identifier of a hosted compute network configuration.
     type: str
 
-
-
-
-
   restricted_to_workflows:
     description:
       - >-
         If true, the runner group will be restricted to running only the workflows specified in the...
     type: bool
 
-
-
     default: false
-
-
 
   runners:
     description:
@@ -78,19 +62,11 @@ options:
         List of runner IDs to add to the runner group.
     type: list
 
-
-
-
-
   selected_repository_ids:
     description:
       - >-
         List of repository IDs that can access the runner group.
     type: list
-
-
-
-
 
   selected_workflows:
     description:
@@ -98,130 +74,79 @@ options:
         List of workflows the runner group should be allowed to run. This setting will be ignored unless...
     type: list
 
-
-
-
-
   visibility:
     description:
       - >-
         Visibility of a runner group. You can select all repositories, select individual repositories,...
     type: str
 
-
     choices: ["selected", "all", "private"]
-
-
-
 
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
 - name: Create a action_runner-group
   stevefulme1.github.action_runner_group:
 
-
     name: "example_name"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     state: present
   # API: POST /orgs/{org}/actions/runner-groups
-
-
 
 - name: Update a action_runner-group
   stevefulme1.github.action_runner_group:
     id: "existing_id"
 
-
-
-
     allows_public_repositories: "updated_allows_public_repositories"
-
-
 
     network_configuration_id: "updated_network_configuration_id"
 
-
-
     restricted_to_workflows: "updated_restricted_to_workflows"
-
-
 
     runners: "updated_runners"
 
-
-
     selected_repository_ids: "updated_selected_repository_ids"
-
-
 
     selected_workflows: "updated_selected_workflows"
 
-
-
     visibility: "updated_visibility"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a action_runner-group
   stevefulme1.github.action_runner_group:
     id: "existing_id"
     state: absent
   # API: DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
-
 """
 
 RETURN = r"""
-
 id:
   description: >-
-    
+
   returned: success
   type: float
 
-
 name:
   description: >-
-    
+
   returned: success
   type: str
-
 
 visibility:
   description: >-
-    
+
   returned: success
   type: str
 
-
 default:
   description: >-
-    
+
   returned: success
   type: bool
-
 
 selected_repositories_url:
   description: >-
@@ -229,20 +154,17 @@ selected_repositories_url:
   returned: success
   type: str
 
-
 runners_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 hosted_runners_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 network_configuration_id:
   description: >-
@@ -250,27 +172,23 @@ network_configuration_id:
   returned: success
   type: str
 
-
 inherited:
   description: >-
-    
+
   returned: success
   type: bool
-
 
 inherited_allows_public_repositories:
   description: >-
-    
+
   returned: success
   type: bool
-
 
 allows_public_repositories:
   description: >-
-    
+
   returned: success
   type: bool
-
 
 workflow_restrictions_read_only:
   description: >-
@@ -278,21 +196,17 @@ workflow_restrictions_read_only:
   returned: success
   type: bool
 
-
 restricted_to_workflows:
   description: >-
     If true, the runner group will be restricted to running only the workflows specified in the...
   returned: success
   type: bool
 
-
 selected_workflows:
   description: >-
     List of workflows the runner group should be allowed to run. This setting will be ignored unless...
   returned: success
   type: list
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

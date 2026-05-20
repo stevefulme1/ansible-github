@@ -32,9 +32,6 @@ options:
     type: str
     required: false
 
-
-
-
   page:
     description:
       - Page number for paginated results.
@@ -61,12 +58,10 @@ EXAMPLES = r"""
   stevefulme1.github.repository_collaborator_info:
   register: result
 
-
 - name: List repository_collaborator resources filtered by name
   stevefulme1.github.repository_collaborator_info:
     name: "my_repository_collaborator"
   register: result
-
 
 - name: List repository_collaborator resources with pagination
   stevefulme1.github.repository_collaborator_info:
@@ -85,142 +80,118 @@ repository_collaborators:
 
     login:
       description: >-
-        
-      type: str
 
+      type: str
 
     id:
       description: >-
-        
-      type: int
 
+      type: int
 
     email:
       description: >-
-        
-      type: str
 
+      type: str
 
     name:
       description: >-
-        
-      type: str
 
+      type: str
 
     node_id:
       description: >-
-        
-      type: str
 
+      type: str
 
     avatar_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     gravatar_id:
       description: >-
-        
-      type: str
 
+      type: str
 
     url:
       description: >-
-        
-      type: str
 
+      type: str
 
     html_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     followers_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     following_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     gists_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     starred_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     subscriptions_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     organizations_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     repos_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     events_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     received_events_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     type:
       description: >-
-        
-      type: str
 
+      type: str
 
     site_admin:
       description: >-
-        
-      type: bool
 
+      type: bool
 
     permissions:
       description: >-
-        
-      type: dict
 
+      type: dict
 
     role_name:
       description: >-
-        
-      type: str
 
+      type: str
 
     user_view_type:
       description: >-
-        
+
       type: str
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

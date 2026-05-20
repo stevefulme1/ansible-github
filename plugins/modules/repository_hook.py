@@ -32,11 +32,7 @@ options:
         Determines if notifications are sent when the webhook is triggered. Set to true to send notifications.
     type: bool
 
-
-
     default: true
-
-
 
   add_events:
     description:
@@ -44,19 +40,11 @@ options:
         Determines a list of events to be added to the list of events that the Hook triggers for.
     type: list
 
-
-
-
-
   config:
     description:
       - >-
         Configuration object of the webhook
     type: dict
-
-
-
-
 
   events:
     description:
@@ -64,11 +52,7 @@ options:
         Determines what events the hook is triggered for. This replaces the entire array of events.
     type: list
 
-
-
     default: ["push"]
-
-
 
   name:
     description:
@@ -76,95 +60,55 @@ options:
         Use web to create a webhook. Default: web. This parameter only accepts the value web.
     type: str
 
-
-
-
-
   remove_events:
     description:
       - >-
         Determines a list of events to be removed from the list of events that the Hook triggers for.
     type: list
 
-
-
-
-
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
 - name: Create a repository_hook
   stevefulme1.github.repository_hook:
 
-
-
-
-
-
-
-
-
-
-
-
-
     state: present
   # API: POST /repos/{owner}/{repo}/hooks
-
-
 
 - name: Update a repository_hook
   stevefulme1.github.repository_hook:
     id: "existing_id"
 
-
     active: "updated_active"
-
-
 
     add_events: "updated_add_events"
 
-
-
     config: "updated_config"
-
-
 
     events: "updated_events"
 
-
-
     name: "updated_name"
-
-
 
     remove_events: "updated_remove_events"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a repository_hook
   stevefulme1.github.repository_hook:
     id: "existing_id"
     state: absent
   # API: DELETE /repos/{owner}/{repo}/hooks/{hook_id}
-
 """
 
 RETURN = r"""
-
 type:
   description: >-
-    
+
   returned: success
   type: str
-
 
 id:
   description: >-
@@ -172,13 +116,11 @@ id:
   returned: success
   type: int
 
-
 name:
   description: >-
     The name of a valid service, use 'web' for a webhook.
   returned: success
   type: str
-
 
 active:
   description: >-
@@ -186,13 +128,11 @@ active:
   returned: success
   type: bool
 
-
 events:
   description: >-
     Determines what events the hook is triggered for. Default: 'push'.
   returned: success
   type: list
-
 
 config:
   description: >-
@@ -200,56 +140,47 @@ config:
   returned: success
   type: dict
 
-
 updated_at:
   description: >-
-    
+
   returned: success
   type: str
-
 
 created_at:
   description: >-
-    
+
   returned: success
   type: str
-
 
 url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 test_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 ping_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 deliveries_url:
   description: >-
-    
+
   returned: success
   type: str
 
-
 last_response:
   description: >-
-    
+
   returned: success
   type: dict
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

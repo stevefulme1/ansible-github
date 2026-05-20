@@ -32,7 +32,6 @@ options:
     type: str
     required: false
 
-
   page:
     description:
       - Page number for paginated results.
@@ -59,12 +58,10 @@ EXAMPLES = r"""
   stevefulme1.github.action_runner_info:
   register: result
 
-
 - name: List action_runner resources filtered by name
   stevefulme1.github.action_runner_info:
     name: "my_action_runner"
   register: result
-
 
 - name: List action_runner resources with pagination
   stevefulme1.github.action_runner_info:
@@ -86,49 +83,40 @@ action_runners:
         The ID of the runner.
       type: int
 
-
     runner_group_id:
       description: >-
         The ID of the runner group.
       type: int
-
 
     name:
       description: >-
         The name of the runner.
       type: str
 
-
     os:
       description: >-
         The Operating System of the runner.
       type: str
-
 
     status:
       description: >-
         The status of the runner.
       type: str
 
-
     busy:
       description: >-
-        
-      type: bool
 
+      type: bool
 
     labels:
       description: >-
-        
-      type: list
 
+      type: list
 
     ephemeral:
       description: >-
-        
+
       type: bool
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

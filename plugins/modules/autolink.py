@@ -34,10 +34,6 @@ options:
 
     required: true
 
-
-
-
-
   url_template:
     description:
       - >-
@@ -46,79 +42,51 @@ options:
 
     required: true
 
-
-
-
-
   is_alphanumeric:
     description:
       - >-
         Whether this autolink reference matches alphanumeric characters. If true, the <num> parameter of...
     type: bool
 
-
-
     default: true
-
-
 
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
 - name: Create a autolink
   stevefulme1.github.autolink:
 
-
     key_prefix: "example_key_prefix"
-
-
 
     url_template: "example_url_template"
 
-
-
-
     state: present
   # API: POST /repos/{owner}/{repo}/autolinks
-
-
 
 - name: Update a autolink
   stevefulme1.github.autolink:
     id: "existing_id"
 
-
-
-
-
-
     is_alphanumeric: "updated_is_alphanumeric"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a autolink
   stevefulme1.github.autolink:
     id: "existing_id"
     state: absent
   # API: DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
-
 """
 
 RETURN = r"""
-
 id:
   description: >-
-    
+
   returned: success
   type: int
-
 
 key_prefix:
   description: >-
@@ -126,13 +94,11 @@ key_prefix:
   returned: success
   type: str
 
-
 url_template:
   description: >-
     A template for the target URL that is generated if a key was found.
   returned: success
   type: str
-
 
 is_alphanumeric:
   description: >-
@@ -140,14 +106,11 @@ is_alphanumeric:
   returned: success
   type: bool
 
-
 updated_at:
   description: >-
-    
+
   returned: success
   type: str
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

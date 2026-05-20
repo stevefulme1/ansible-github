@@ -32,19 +32,11 @@ options:
         The type of deployment branch policy for this environment. To allow all branches to deploy, set to null.
     type: dict
 
-
-
-
-
   prevent_self_review:
     description:
       - >-
         Whether or not a user who created the job is prevented from approving their own job.
     type: bool
-
-
-
-
 
   reviewers:
     description:
@@ -52,75 +44,51 @@ options:
         The people or teams that may review jobs that reference the environment. You can list up to six...
     type: list
 
-
-
-
-
   wait_timer:
     description:
       - >-
         The amount of time to delay a job after the job is initially triggered. The time (in minutes)...
     type: int
 
-
-
-
-
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
-
 - name: Update a environment
   stevefulme1.github.environment:
     id: "existing_id"
 
-
     deployment_branch_policy: "updated_deployment_branch_policy"
-
-
 
     prevent_self_review: "updated_prevent_self_review"
 
-
-
     reviewers: "updated_reviewers"
-
-
 
     wait_timer: "updated_wait_timer"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a environment
   stevefulme1.github.environment:
     id: "existing_id"
     state: absent
   # API: DELETE /repos/{owner}/{repo}/environments/{environment_name}
-
 """
 
 RETURN = r"""
-
 id:
   description: >-
     The id of the environment.
   returned: success
   type: int
 
-
 node_id:
   description: >-
-    
+
   returned: success
   type: str
-
 
 name:
   description: >-
@@ -128,20 +96,17 @@ name:
   returned: success
   type: str
 
-
 url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 html_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 created_at:
   description: >-
@@ -149,13 +114,11 @@ created_at:
   returned: success
   type: str
 
-
 updated_at:
   description: >-
     The time that the environment was last updated, in ISO 8601 format.
   returned: success
   type: str
-
 
 protection_rules:
   description: >-
@@ -163,14 +126,11 @@ protection_rules:
   returned: success
   type: list
 
-
 deployment_branch_policy:
   description: >-
     The type of deployment branch policy for this environment. To allow all branches to deploy, set to null.
   returned: success
   type: dict
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

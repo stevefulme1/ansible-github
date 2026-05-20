@@ -32,71 +32,47 @@ options:
         The name of the variable.
     type: str
 
-
-
-
-
   value:
     description:
       - >-
         The value of the variable.
     type: str
 
-
-
-
-
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
 - name: Create a environment_variable
   stevefulme1.github.environment_variable:
 
-
-
-
-
     state: present
   # API: POST /repos/{owner}/{repo}/environments/{environment_name}/variables
-
-
 
 - name: Update a environment_variable
   stevefulme1.github.environment_variable:
     id: "existing_id"
 
-
     name: "updated_name"
-
-
 
     value: "updated_value"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a environment_variable
   stevefulme1.github.environment_variable:
     id: "existing_id"
     state: absent
   # API: DELETE /repos/{owner}/{repo}/environments/{environment_name}/variables/{name}
-
 """
 
 RETURN = r"""
-
 name:
   description: >-
     The name of the variable.
   returned: success
   type: str
-
 
 value:
   description: >-
@@ -104,21 +80,17 @@ value:
   returned: success
   type: str
 
-
 created_at:
   description: >-
     The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
   returned: success
   type: str
 
-
 updated_at:
   description: >-
     The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
   returned: success
   type: str
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

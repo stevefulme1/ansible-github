@@ -32,29 +32,6 @@ options:
     type: str
     required: false
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   page:
     description:
       - Page number for paginated results.
@@ -81,12 +58,10 @@ EXAMPLES = r"""
   stevefulme1.github.team_info:
   register: result
 
-
 - name: List team resources filtered by name
   stevefulme1.github.team_info:
     name: "my_team"
   register: result
-
 
 - name: List team resources with pagination
   stevefulme1.github.team_info:
@@ -108,133 +83,110 @@ teams:
         Unique identifier of the team
       type: int
 
-
     node_id:
       description: >-
-        
-      type: str
 
+      type: str
 
     url:
       description: >-
         URL for the team
       type: str
 
-
     html_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     name:
       description: >-
         Name of the team
       type: str
 
-
     slug:
       description: >-
-        
-      type: str
 
+      type: str
 
     description:
       description: >-
-        
-      type: str
 
+      type: str
 
     privacy:
       description: >-
         The level of privacy this team should have
       type: str
 
-
     notification_setting:
       description: >-
         The notification setting the team has set
       type: str
-
 
     permission:
       description: >-
         Permission that the team will have for its repositories
       type: str
 
-
     members_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     repositories_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     parent:
       description: >-
         Groups of organization members that gives permissions on specified repositories.
       type: dict
 
-
     members_count:
       description: >-
-        
-      type: int
 
+      type: int
 
     repos_count:
       description: >-
-        
-      type: int
 
+      type: int
 
     created_at:
       description: >-
-        
-      type: str
 
+      type: str
 
     updated_at:
       description: >-
-        
-      type: str
 
+      type: str
 
     organization:
       description: >-
         Team Organization
       type: dict
 
-
     ldap_dn:
       description: >-
         The distinguished name (DN) of the LDAP entry to map to a team.
       type: str
-
 
     type:
       description: >-
         The ownership type of the team
       type: str
 
-
     organization_id:
       description: >-
         Unique identifier of the organization to which this team belongs
       type: int
 
-
     enterprise_id:
       description: >-
         Unique identifier of the enterprise to which this team belongs
       type: int
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

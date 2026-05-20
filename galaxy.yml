@@ -9,6 +9,7 @@ description: Ansible collection for the GitHub v3 REST API API
 license:
   - GPL-3.0-or-later
 tags:
+  - tools
   - github
   - v3
   - rest

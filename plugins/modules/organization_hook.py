@@ -32,11 +32,7 @@ options:
         Determines if notifications are sent when the webhook is triggered. Set to true to send notifications.
     type: bool
 
-
-
     default: true
-
-
 
   config:
     description:
@@ -44,166 +40,119 @@ options:
         Key/value pairs to provide settings for this webhook.
     type: dict
 
-
-
-
-
   events:
     description:
       - >-
         Determines what events the hook is triggered for.
     type: list
 
-
-
     default: ["push"]
-
-
 
   name:
     description:
       - >-
-        
+
     type: str
-
-
-
-
 
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
 - name: Create a organization_hook
   stevefulme1.github.organization_hook:
 
-
-
-
-
-
-
-
-
     state: present
   # API: POST /orgs/{org}/hooks
-
-
 
 - name: Update a organization_hook
   stevefulme1.github.organization_hook:
     id: "existing_id"
 
-
     active: "updated_active"
-
-
 
     config: "updated_config"
 
-
-
     events: "updated_events"
-
-
 
     name: "updated_name"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a organization_hook
   stevefulme1.github.organization_hook:
     id: "existing_id"
     state: absent
   # API: DELETE /orgs/{org}/hooks/{hook_id}
-
 """
 
 RETURN = r"""
-
 id:
   description: >-
-    
+
   returned: success
   type: int
 
-
 url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 ping_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 deliveries_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 name:
   description: >-
-    
+
   returned: success
   type: str
-
 
 events:
   description: >-
-    
+
   returned: success
   type: list
 
-
 active:
   description: >-
-    
+
   returned: success
   type: bool
 
-
 config:
   description: >-
-    
+
   returned: success
   type: dict
 
-
 updated_at:
   description: >-
-    
+
   returned: success
   type: str
-
 
 created_at:
   description: >-
-    
+
   returned: success
   type: str
-
 
 type:
   description: >-
-    
+
   returned: success
   type: str
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

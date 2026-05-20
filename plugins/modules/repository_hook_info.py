@@ -32,19 +32,6 @@ options:
     type: str
     required: false
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   page:
     description:
       - Page number for paginated results.
@@ -71,12 +58,10 @@ EXAMPLES = r"""
   stevefulme1.github.repository_hook_info:
   register: result
 
-
 - name: List repository_hook resources filtered by name
   stevefulme1.github.repository_hook_info:
     name: "my_repository_hook"
   register: result
-
 
 - name: List repository_hook resources with pagination
   stevefulme1.github.repository_hook_info:
@@ -95,82 +80,68 @@ repository_hooks:
 
     type:
       description: >-
-        
-      type: str
 
+      type: str
 
     id:
       description: >-
         Unique identifier of the webhook.
       type: int
 
-
     name:
       description: >-
         The name of a valid service, use 'web' for a webhook.
       type: str
-
 
     active:
       description: >-
         Determines whether the hook is actually triggered on pushes.
       type: bool
 
-
     events:
       description: >-
         Determines what events the hook is triggered for. Default: 'push'.
       type: list
-
 
     config:
       description: >-
         Configuration object of the webhook
       type: dict
 
-
     updated_at:
       description: >-
-        
-      type: str
 
+      type: str
 
     created_at:
       description: >-
-        
-      type: str
 
+      type: str
 
     url:
       description: >-
-        
-      type: str
 
+      type: str
 
     test_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     ping_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     deliveries_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     last_response:
       description: >-
-        
+
       type: dict
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

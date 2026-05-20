@@ -34,10 +34,6 @@ options:
 
     required: true
 
-
-
-
-
   key_id:
     description:
       - >-
@@ -46,61 +42,43 @@ options:
 
     required: true
 
-
-
-
-
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
-
 - name: Update a environment_secret
   stevefulme1.github.environment_secret:
     id: "existing_id"
 
-
-
-
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a environment_secret
   stevefulme1.github.environment_secret:
     id: "existing_id"
     state: absent
   # API: DELETE /repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}
-
 """
 
 RETURN = r"""
-
 name:
   description: >-
     The name of the secret.
   returned: success
   type: str
 
-
 created_at:
   description: >-
-    
+
   returned: success
   type: str
-
 
 updated_at:
   description: >-
-    
+
   returned: success
   type: str
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

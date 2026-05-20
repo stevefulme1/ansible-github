@@ -32,19 +32,11 @@ options:
         The name of the variable.
     type: str
 
-
-
-
-
   selected_repository_ids:
     description:
       - >-
         An array of repository ids that can access the organization variable. You can only provide a...
     type: list
-
-
-
-
 
   value:
     description:
@@ -52,85 +44,53 @@ options:
         The value of the variable.
     type: str
 
-
-
-
-
   visibility:
     description:
       - >-
         The type of repositories in the organization that can access the variable. selected means only...
     type: str
 
-
     choices: ["all", "private", "selected"]
-
-
-
 
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
 - name: Create a action_variable
   stevefulme1.github.action_variable:
 
-
-
-
-
-
-
-
-
     state: present
   # API: POST /repos/{owner}/{repo}/actions/variables
-
-
 
 - name: Update a action_variable
   stevefulme1.github.action_variable:
     id: "existing_id"
 
-
     name: "updated_name"
-
-
 
     selected_repository_ids: "updated_selected_repository_ids"
 
-
-
     value: "updated_value"
-
-
 
     visibility: "updated_visibility"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a action_variable
   stevefulme1.github.action_variable:
     id: "existing_id"
     state: absent
   # API: DELETE /repos/{owner}/{repo}/actions/variables/{name}
-
 """
 
 RETURN = r"""
-
 name:
   description: >-
     The name of the variable.
   returned: success
   type: str
-
 
 value:
   description: >-
@@ -138,21 +98,17 @@ value:
   returned: success
   type: str
 
-
 created_at:
   description: >-
     The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
   returned: success
   type: str
 
-
 updated_at:
   description: >-
     The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
   returned: success
   type: str
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

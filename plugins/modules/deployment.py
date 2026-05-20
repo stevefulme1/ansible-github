@@ -34,21 +34,13 @@ options:
 
     required: true
 
-
-
-
-
   auto_merge:
     description:
       - >-
         Attempts to automatically merge the default branch into the requested ref, if it's behind the...
     type: bool
 
-
-
     default: true
-
-
 
   description:
     description:
@@ -56,11 +48,7 @@ options:
         Short description of the deployment.
     type: str
 
-
-
     default: ""
-
-
 
   environment:
     description:
@@ -68,21 +56,13 @@ options:
         Name for the target deployment environment (e.g., production, staging, qa).
     type: str
 
-
-
     default: "production"
-
-
 
   payload:
     description:
       - >-
-        
+
     type: dict
-
-
-
-
 
   production_environment:
     description:
@@ -90,19 +70,11 @@ options:
         Specifies if the given environment is one that end-users directly interact with. Default: true...
     type: bool
 
-
-
-
-
   required_contexts:
     description:
       - >-
         The status contexts to verify against commit status checks. If you omit this parameter, GitHub...
     type: list
-
-
-
-
 
   task:
     description:
@@ -110,11 +82,7 @@ options:
         Specifies a task to execute (e.g., deploy or deploy:migrations).
     type: str
 
-
-
     default: "deploy"
-
-
 
   transient_environment:
     description:
@@ -122,105 +90,57 @@ options:
         Specifies if the given environment is specific to the deployment and will no longer exist at...
     type: bool
 
-
-
     default: false
-
-
 
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
 - name: Create a deployment
   stevefulme1.github.deployment:
 
-
     ref: "example_ref"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     state: present
   # API: POST /repos/{owner}/{repo}/deployments
-
-
 
 - name: Update a deployment
   stevefulme1.github.deployment:
     id: "existing_id"
 
-
-
-
     auto_merge: "updated_auto_merge"
-
-
 
     description: "updated_description"
 
-
-
     environment: "updated_environment"
-
-
 
     payload: "updated_payload"
 
-
-
     production_environment: "updated_production_environment"
-
-
 
     required_contexts: "updated_required_contexts"
 
-
-
     task: "updated_task"
-
-
 
     transient_environment: "updated_transient_environment"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a deployment
   stevefulme1.github.deployment:
     id: "existing_id"
     state: absent
   # API: DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
-
 """
 
 RETURN = r"""
-
 url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 id:
   description: >-
@@ -228,20 +148,17 @@ id:
   returned: success
   type: int
 
-
 node_id:
   description: >-
-    
+
   returned: success
   type: str
-
 
 sha:
   description: >-
-    
+
   returned: success
   type: str
-
 
 ref:
   description: >-
@@ -249,27 +166,23 @@ ref:
   returned: success
   type: str
 
-
 task:
   description: >-
     Parameter to specify a task to execute
   returned: success
   type: str
 
-
 payload:
   description: >-
-    
+
   returned: success
   type: dict
 
-
 original_environment:
   description: >-
-    
+
   returned: success
   type: str
-
 
 environment:
   description: >-
@@ -277,13 +190,11 @@ environment:
   returned: success
   type: str
 
-
 description:
   description: >-
-    
+
   returned: success
   type: str
-
 
 creator:
   description: >-
@@ -291,34 +202,29 @@ creator:
   returned: success
   type: dict
 
-
 created_at:
   description: >-
-    
+
   returned: success
   type: str
-
 
 updated_at:
   description: >-
-    
+
   returned: success
   type: str
-
 
 statuses_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 repository_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 transient_environment:
   description: >-
@@ -326,21 +232,17 @@ transient_environment:
   returned: success
   type: bool
 
-
 production_environment:
   description: >-
     Specifies if the given environment is one that end-users directly interact with. Default: false.
   returned: success
   type: bool
 
-
 performed_via_github_app:
   description: >-
     GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and...
   returned: success
   type: dict
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

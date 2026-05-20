@@ -34,10 +34,6 @@ options:
 
     required: true
 
-
-
-
-
   key_id:
     description:
       - >-
@@ -45,10 +41,6 @@ options:
     type: str
 
     required: true
-
-
-
-
 
   visibility:
     description:
@@ -58,11 +50,7 @@ options:
 
     required: true
 
-
     choices: ["all", "private", "selected"]
-
-
-
 
   selected_repository_ids:
     description:
@@ -70,67 +58,45 @@ options:
         An array of repository ids that can access the organization secret. You can only provide a list...
     type: list
 
-
-
-
-
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
-
 - name: Update a action_secret
   stevefulme1.github.action_secret:
     id: "existing_id"
 
-
-
-
-
-
-
-
     selected_repository_ids: "updated_selected_repository_ids"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a action_secret
   stevefulme1.github.action_secret:
     id: "existing_id"
     state: absent
   # API: DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
-
 """
 
 RETURN = r"""
-
 name:
   description: >-
     The name of the secret.
   returned: success
   type: str
 
-
 created_at:
   description: >-
-    
+
   returned: success
   type: str
-
 
 updated_at:
   description: >-
-    
+
   returned: success
   type: str
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

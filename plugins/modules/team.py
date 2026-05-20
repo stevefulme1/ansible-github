@@ -34,19 +34,11 @@ options:
 
     required: true
 
-
-
-
-
   description:
     description:
       - >-
         The description of the team.
     type: str
-
-
-
-
 
   group_id:
     description:
@@ -54,19 +46,11 @@ options:
         The ID of the IdP group to assign team membership with. The new IdP group will replace the...
     type: str
 
-
-
-
-
   maintainers:
     description:
       - >-
         List GitHub usernames for organization members who will become team maintainers.
     type: list
-
-
-
-
 
   notification_setting:
     description:
@@ -74,11 +58,7 @@ options:
         The notification setting the team has chosen. Editing teams without specifying this parameter...
     type: str
 
-
     choices: ["notifications_enabled", "notifications_disabled"]
-
-
-
 
   organization_selection_type:
     description:
@@ -86,13 +66,9 @@ options:
         Specifies which organizations in the enterprise should have access to this team. Can be one of...
     type: str
 
-
     choices: ["disabled", "selected", "all"]
 
-
     default: "disabled"
-
-
 
   parent_team_id:
     description:
@@ -100,23 +76,15 @@ options:
         The ID of a team to set as the parent team.
     type: int
 
-
-
-
-
   permission:
     description:
       - >-
         Closing down notice. The permission that new repositories will be added to the team with when...
     type: str
 
-
     choices: ["pull", "push", "admin"]
 
-
     default: "pull"
-
-
 
   privacy:
     description:
@@ -124,11 +92,7 @@ options:
         The level of privacy this team should have. Editing teams without specifying this parameter...
     type: str
 
-
     choices: ["secret", "closed"]
-
-
-
 
   repo_names:
     description:
@@ -136,136 +100,75 @@ options:
         The full name (e.g., "organization-name/repository-name") of repositories to add the team to.
     type: list
 
-
-
-
-
   sync_to_organizations:
     description:
       - >-
         Retired: this field is no longer supported. Whether the enterprise team should be reflected in...
     type: str
 
-
     choices: ["all", "disabled"]
 
-
     default: "disabled"
-
-
 
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
 - name: Create a team
   stevefulme1.github.team:
 
-
     name: "example_name"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     state: present
   # API: POST /orgs/{org}/teams
-
-
 
 - name: Update a team
   stevefulme1.github.team:
     id: "existing_id"
 
-
-
-
     description: "updated_description"
-
-
 
     group_id: "updated_group_id"
 
-
-
     maintainers: "updated_maintainers"
-
-
 
     notification_setting: "updated_notification_setting"
 
-
-
     organization_selection_type: "updated_organization_selection_type"
-
-
 
     parent_team_id: "updated_parent_team_id"
 
-
-
     permission: "updated_permission"
-
-
 
     privacy: "updated_privacy"
 
-
-
     repo_names: "updated_repo_names"
-
-
 
     sync_to_organizations: "updated_sync_to_organizations"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a team
   stevefulme1.github.team:
     id: "existing_id"
     state: absent
   # API: DELETE /teams/{team_id}
-
 """
 
 RETURN = r"""
-
 id:
   description: >-
     Unique identifier of the team
   returned: success
   type: int
 
-
 node_id:
   description: >-
-    
+
   returned: success
   type: str
-
 
 url:
   description: >-
@@ -273,13 +176,11 @@ url:
   returned: success
   type: str
 
-
 html_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 name:
   description: >-
@@ -287,20 +188,17 @@ name:
   returned: success
   type: str
 
-
 slug:
   description: >-
-    
+
   returned: success
   type: str
-
 
 description:
   description: >-
-    
+
   returned: success
   type: str
-
 
 privacy:
   description: >-
@@ -308,13 +206,11 @@ privacy:
   returned: success
   type: str
 
-
 notification_setting:
   description: >-
     The notification setting the team has set
   returned: success
   type: str
-
 
 permission:
   description: >-
@@ -322,20 +218,17 @@ permission:
   returned: success
   type: str
 
-
 members_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 repositories_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 parent:
   description: >-
@@ -343,34 +236,29 @@ parent:
   returned: success
   type: dict
 
-
 members_count:
   description: >-
-    
+
   returned: success
   type: int
-
 
 repos_count:
   description: >-
-    
+
   returned: success
   type: int
 
-
 created_at:
   description: >-
-    
+
   returned: success
   type: str
-
 
 updated_at:
   description: >-
-    
+
   returned: success
   type: str
-
 
 organization:
   description: >-
@@ -378,13 +266,11 @@ organization:
   returned: success
   type: dict
 
-
 ldap_dn:
   description: >-
     The distinguished name (DN) of the LDAP entry to map to a team.
   returned: success
   type: str
-
 
 type:
   description: >-
@@ -392,21 +278,17 @@ type:
   returned: success
   type: str
 
-
 organization_id:
   description: >-
     Unique identifier of the organization to which this team belongs
   returned: success
   type: int
 
-
 enterprise_id:
   description: >-
     Unique identifier of the enterprise to which this team belongs
   returned: success
   type: int
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

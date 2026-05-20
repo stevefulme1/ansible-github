@@ -32,9 +32,6 @@ options:
     type: str
     required: false
 
-
-
-
   page:
     description:
       - Page number for paginated results.
@@ -61,12 +58,10 @@ EXAMPLES = r"""
   stevefulme1.github.issue_label_info:
   register: result
 
-
 - name: List issue_label resources filtered by name
   stevefulme1.github.issue_label_info:
     name: "my_issue_label"
   register: result
-
 
 - name: List issue_label resources with pagination
   stevefulme1.github.issue_label_info:
@@ -88,43 +83,35 @@ issue_labels:
         Unique identifier for the label.
       type: int
 
-
     node_id:
       description: >-
-        
-      type: str
 
+      type: str
 
     url:
       description: >-
         URL for the label
       type: str
 
-
     name:
       description: >-
         The name of the label.
       type: str
-
 
     description:
       description: >-
         Optional description of the label, such as its purpose.
       type: str
 
-
     color:
       description: >-
         6-character hex code, without the leading , identifying the color
       type: str
 
-
     default:
       description: >-
         Whether this label comes by default in a new repository.
       type: bool
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

@@ -32,15 +32,6 @@ options:
     type: str
     required: false
 
-
-
-
-
-
-
-
-
-
   page:
     description:
       - Page number for paginated results.
@@ -67,12 +58,10 @@ EXAMPLES = r"""
   stevefulme1.github.action_secret_info:
   register: result
 
-
 - name: List action_secret resources filtered by name
   stevefulme1.github.action_secret_info:
     name: "my_action_secret"
   register: result
-
 
 - name: List action_secret resources with pagination
   stevefulme1.github.action_secret_info:
@@ -94,19 +83,15 @@ action_secrets:
         The name of the secret.
       type: str
 
-
     created_at:
       description: >-
-        
-      type: str
 
+      type: str
 
     updated_at:
       description: >-
-        
+
       type: str
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

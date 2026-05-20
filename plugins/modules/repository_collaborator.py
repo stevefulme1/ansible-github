@@ -32,203 +32,167 @@ options:
         The permission to grant the collaborator. Only valid on organization-owned repositories. We...
     type: str
 
-
-
     default: "push"
-
-
 
 extends_documentation_fragment:
   - stevefulme1.github.auth
 """
 
 EXAMPLES = r"""
-
-
 - name: Update a repository_collaborator
   stevefulme1.github.repository_collaborator:
     id: "existing_id"
 
-
     permission: "updated_permission"
 
-
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a repository_collaborator
   stevefulme1.github.repository_collaborator:
     id: "existing_id"
     state: absent
   # API: DELETE /repos/{owner}/{repo}/collaborators/{username}
-
 """
 
 RETURN = r"""
-
 login:
   description: >-
-    
+
   returned: success
   type: str
-
 
 id:
   description: >-
-    
+
   returned: success
   type: int
 
-
 email:
   description: >-
-    
+
   returned: success
   type: str
-
 
 name:
   description: >-
-    
+
   returned: success
   type: str
-
 
 node_id:
   description: >-
-    
+
   returned: success
   type: str
-
 
 avatar_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 gravatar_id:
   description: >-
-    
+
   returned: success
   type: str
-
 
 url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 html_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 followers_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 following_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 gists_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 starred_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 subscriptions_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 organizations_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 repos_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 events_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 received_events_url:
   description: >-
-    
+
   returned: success
   type: str
-
 
 type:
   description: >-
-    
+
   returned: success
   type: str
-
 
 site_admin:
   description: >-
-    
+
   returned: success
   type: bool
 
-
 permissions:
   description: >-
-    
+
   returned: success
   type: dict
 
-
 role_name:
   description: >-
-    
+
   returned: success
   type: str
-
 
 user_view_type:
   description: >-
-    
+
   returned: success
   type: str
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

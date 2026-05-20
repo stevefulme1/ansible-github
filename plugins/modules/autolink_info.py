@@ -26,13 +26,6 @@ options:
     type: str
     required: false
 
-
-
-
-
-
-
-
   page:
     description:
       - Page number for paginated results.
@@ -59,8 +52,6 @@ EXAMPLES = r"""
   stevefulme1.github.autolink_info:
   register: result
 
-
-
 - name: List autolink resources with pagination
   stevefulme1.github.autolink_info:
     page: 1
@@ -78,34 +69,28 @@ autolinks:
 
     id:
       description: >-
-        
-      type: int
 
+      type: int
 
     key_prefix:
       description: >-
         The prefix of a key that is linkified.
       type: str
 
-
     url_template:
       description: >-
         A template for the target URL that is generated if a key was found.
       type: str
-
 
     is_alphanumeric:
       description: >-
         Whether this autolink reference matches alphanumeric characters. If false, this autolink...
       type: bool
 
-
     updated_at:
       description: >-
-        
+
       type: str
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

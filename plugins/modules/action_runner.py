@@ -31,33 +31,26 @@ extends_documentation_fragment:
 """
 
 EXAMPLES = r"""
-
-
 - name: Update a action_runner
   stevefulme1.github.action_runner:
     id: "existing_id"
 
     state: present
-  # API:  
-
-
+  # API:
 
 - name: Delete a action_runner
   stevefulme1.github.action_runner:
     id: "existing_id"
     state: absent
   # API: DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
-
 """
 
 RETURN = r"""
-
 id:
   description: >-
     The ID of the runner.
   returned: success
   type: int
-
 
 runner_group_id:
   description: >-
@@ -65,13 +58,11 @@ runner_group_id:
   returned: success
   type: int
 
-
 name:
   description: >-
     The name of the runner.
   returned: success
   type: str
-
 
 os:
   description: >-
@@ -79,35 +70,29 @@ os:
   returned: success
   type: str
 
-
 status:
   description: >-
     The status of the runner.
   returned: success
   type: str
 
-
 busy:
   description: >-
-    
+
   returned: success
   type: bool
-
 
 labels:
   description: >-
-    
+
   returned: success
   type: list
 
-
 ephemeral:
   description: >-
-    
+
   returned: success
   type: bool
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

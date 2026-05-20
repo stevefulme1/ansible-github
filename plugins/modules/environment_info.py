@@ -32,15 +32,6 @@ options:
     type: str
     required: false
 
-
-
-
-
-
-
-
-
-
   page:
     description:
       - Page number for paginated results.
@@ -67,12 +58,10 @@ EXAMPLES = r"""
   stevefulme1.github.environment_info:
   register: result
 
-
 - name: List environment resources filtered by name
   stevefulme1.github.environment_info:
     name: "my_environment"
   register: result
-
 
 - name: List environment resources with pagination
   stevefulme1.github.environment_info:
@@ -94,55 +83,45 @@ environments:
         The id of the environment.
       type: int
 
-
     node_id:
       description: >-
-        
-      type: str
 
+      type: str
 
     name:
       description: >-
         The name of the environment.
       type: str
 
-
     url:
       description: >-
-        
-      type: str
 
+      type: str
 
     html_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     created_at:
       description: >-
         The time that the environment was created, in ISO 8601 format.
       type: str
 
-
     updated_at:
       description: >-
         The time that the environment was last updated, in ISO 8601 format.
       type: str
-
 
     protection_rules:
       description: >-
         Built-in deployment protection rules for the environment.
       type: list
 
-
     deployment_branch_policy:
       description: >-
         The type of deployment branch policy for this environment. To allow all branches to deploy, set to null.
       type: dict
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule

@@ -32,23 +32,6 @@ options:
     type: str
     required: false
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   page:
     description:
       - Page number for paginated results.
@@ -75,12 +58,10 @@ EXAMPLES = r"""
   stevefulme1.github.action_runner_group_info:
   register: result
 
-
 - name: List action_runner-group resources filtered by name
   stevefulme1.github.action_runner_group_info:
     name: "my_action_runner-group"
   register: result
-
 
 - name: List action_runner-group resources with pagination
   stevefulme1.github.action_runner_group_info:
@@ -99,88 +80,73 @@ action_runner_groups:
 
     id:
       description: >-
-        
-      type: float
 
+      type: float
 
     name:
       description: >-
-        
-      type: str
 
+      type: str
 
     visibility:
       description: >-
-        
-      type: str
 
+      type: str
 
     default:
       description: >-
-        
-      type: bool
 
+      type: bool
 
     selected_repositories_url:
       description: >-
         Link to the selected repositories resource for this runner group. Not present unless visibility...
       type: str
 
-
     runners_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     hosted_runners_url:
       description: >-
-        
-      type: str
 
+      type: str
 
     network_configuration_id:
       description: >-
         The identifier of a hosted compute network configuration.
       type: str
 
-
     inherited:
       description: >-
-        
-      type: bool
 
+      type: bool
 
     inherited_allows_public_repositories:
       description: >-
-        
-      type: bool
 
+      type: bool
 
     allows_public_repositories:
       description: >-
-        
-      type: bool
 
+      type: bool
 
     workflow_restrictions_read_only:
       description: >-
         If true, the restricted_to_workflows and selected_workflows fields cannot be modified.
       type: bool
 
-
     restricted_to_workflows:
       description: >-
         If true, the runner group will be restricted to running only the workflows specified in the...
       type: bool
 
-
     selected_workflows:
       description: >-
         List of workflows the runner group should be allowed to run. This setting will be ignored unless...
       type: list
-
-
 """
 
 from ansible.module_utils.basic import AnsibleModule
