@@ -1,0 +1,12 @@
+---
+schemaVersion: 2.2.2
+metadata:
+  name: stevefulme1.github-810f4d21
+components:
+  - name: tooling-container
+    container:
+      image: ghcr.io/ansible/ansible-devspaces:latest
+      memoryRequest: 256M
+      memoryLimit: 6Gi
+      cpuRequest: 250m
+      cpuLimit: 2000m

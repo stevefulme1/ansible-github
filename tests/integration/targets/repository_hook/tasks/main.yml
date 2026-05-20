@@ -1,0 +1,239 @@
+
+---
+# Integration tests for stevefulme1.github.repository_hook
+#
+# These tests verify full CRUD lifecycle with idempotency and check_mode.
+# A live API endpoint is required.
+
+- name: Set test variables
+  ansible.builtin.set_fact:
+    test_repository_hook_params:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ============================================================
+# CREATE - check mode
+# ============================================================
+- name: Create repository_hook (check mode)
+  stevefulme1.github.repository_hook:
+    "{{ test_repository_hook_params }}"
+
+    state: present
+  check_mode: true
+  register: create_check
+
+- name: Assert create in check mode reports changed
+  ansible.builtin.assert:
+    that:
+      - create_check is changed
+    fail_msg: "Create in check mode should report changed=true"
+
+- name: Verify repository_hook was NOT actually created (check mode)
+  stevefulme1.github.repository_hook_info:
+
+
+
+
+
+
+
+
+
+
+    name: "{{ test_name | default("test_name_value") }}"
+
+
+
+
+  register: check_verify
+
+- name: Assert resource does not exist after check mode create
+  ansible.builtin.assert:
+    that:
+      - check_verify.repository_hooks | length == 0
+    fail_msg: "Resource should not exist after check mode create"
+
+# ============================================================
+# CREATE - real
+# ============================================================
+- name: Create repository_hook
+  stevefulme1.github.repository_hook:
+    "{{ test_repository_hook_params }}"
+
+    state: present
+  register: create_result
+
+- name: Assert create reports changed
+  ansible.builtin.assert:
+    that:
+      - create_result is changed
+    fail_msg: "Create should report changed=true"
+
+- name: Record created resource identifier
+  ansible.builtin.set_fact:
+    created_id: "{{ create_result.id }}"
+
+# ============================================================
+# CREATE - idempotency
+# ============================================================
+- name: Create repository_hook again (idempotency)
+  stevefulme1.github.repository_hook:
+    "{{ test_repository_hook_params }}"
+
+    state: present
+  register: create_idempotent
+
+- name: Assert create is idempotent
+  ansible.builtin.assert:
+    that:
+      - create_idempotent is not changed
+    fail_msg: "Repeated create with same params should report changed=false"
+
+# ============================================================
+# READ - verify created resource
+# ============================================================
+- name: Get repository_hook info
+  stevefulme1.github.repository_hook_info:
+    id: "{{ created_id }}"
+  register: info_result
+
+- name: Assert resource exists and has expected data
+  ansible.builtin.assert:
+    that:
+      - info_result.repository_hooks | length == 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+    fail_msg: "Created resource does not match expected values"
+
+# ============================================================
+# UPDATE
+# ============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- name: Update repository_hook
+  stevefulme1.github.repository_hook:
+    id: "{{ created_id }}"
+
+    name: "updated_name_value"
+
+    state: present
+  register: update_result
+
+- name: Assert update reports changed
+  ansible.builtin.assert:
+    that:
+      - update_result is changed
+    fail_msg: "Update should report changed=true"
+
+# ============================================================
+# UPDATE - idempotency
+# ============================================================
+- name: Update repository_hook again (idempotency)
+  stevefulme1.github.repository_hook:
+    id: "{{ created_id }}"
+
+    name: "updated_name_value"
+
+    state: present
+  register: update_idempotent
+
+- name: Assert update is idempotent
+  ansible.builtin.assert:
+    that:
+      - update_idempotent is not changed
+    fail_msg: "Repeated update with same params should report changed=false"
+
+
+# ============================================================
+# DELETE - check mode
+# ============================================================
+- name: Delete repository_hook (check mode)
+  stevefulme1.github.repository_hook:
+    id: "{{ created_id }}"
+    state: absent
+  check_mode: true
+  register: delete_check
+
+- name: Assert delete in check mode reports changed
+  ansible.builtin.assert:
+    that:
+      - delete_check is changed
+    fail_msg: "Delete in check mode should report changed=true"
+
+- name: Verify repository_hook still exists after check mode delete
+  stevefulme1.github.repository_hook_info:
+    id: "{{ created_id }}"
+  register: delete_check_verify
+
+- name: Assert resource still exists after check mode delete
+  ansible.builtin.assert:
+    that:
+      - delete_check_verify.repository_hooks | length == 1
+    fail_msg: "Resource should still exist after check mode delete"
+
+# ============================================================
+# DELETE - real
+# ============================================================
+- name: Delete repository_hook
+  stevefulme1.github.repository_hook:
+    id: "{{ created_id }}"
+    state: absent
+  register: delete_result
+
+- name: Assert delete reports changed
+  ansible.builtin.assert:
+    that:
+      - delete_result is changed
+    fail_msg: "Delete should report changed=true"
+
+# ============================================================
+# DELETE - idempotency
+# ============================================================
+- name: Delete repository_hook again (idempotency)
+  stevefulme1.github.repository_hook:
+    id: "{{ created_id }}"
+    state: absent
+  register: delete_idempotent
+
+- name: Assert delete is idempotent
+  ansible.builtin.assert:
+    that:
+      - delete_idempotent is not changed
+    fail_msg: "Repeated delete should report changed=false"

@@ -1,0 +1,20 @@
+---
+namespace: stevefulme1
+name: github
+version: 0.1.0
+readme: README.md
+authors:
+  - Steve Fulmer (@stevefulmer)
+description: Ansible collection for the GitHub v3 REST API API
+license:
+  - GPL-3.0-or-later
+tags:
+  - github
+  - v3
+  - rest
+  - api
+repository: https://github.com/stevefulme1/ansible-github
+build_ignore:
+  - tests/output
+  - .tox
+  - .venv
