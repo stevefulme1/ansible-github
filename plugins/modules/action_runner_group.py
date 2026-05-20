@@ -321,16 +321,19 @@ def main():
 
             runners=dict(
                 type="list",
+                elements="str",
 
             ),
 
             selected_repository_ids=dict(
                 type="list",
+                elements="str",
 
             ),
 
             selected_workflows=dict(
                 type="list",
+                elements="str",
 
             ),
 

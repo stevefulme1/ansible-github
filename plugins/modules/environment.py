@@ -217,6 +217,7 @@ def main():
 
             reviewers=dict(
                 type="list",
+                elements="str",
 
             ),
 

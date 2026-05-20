@@ -190,6 +190,7 @@ def main():
 
             selected_repository_ids=dict(
                 type="list",
+                elements="str",
 
             ),
 

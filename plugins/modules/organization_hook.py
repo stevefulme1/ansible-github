@@ -241,6 +241,7 @@ def main():
 
             events=dict(
                 type="list",
+                elements="str",
 
                 default=["push"],
 

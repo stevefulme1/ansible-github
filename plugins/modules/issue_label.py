@@ -168,6 +168,7 @@ def main():
 
             labels=dict(
                 type="list",
+                elements="str",
 
             ),
 

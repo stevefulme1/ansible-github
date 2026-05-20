@@ -270,6 +270,7 @@ def main():
 
             add_events=dict(
                 type="list",
+                elements="str",
 
             ),
 
@@ -280,6 +281,7 @@ def main():
 
             events=dict(
                 type="list",
+                elements="str",
 
                 default=["push"],
 
@@ -292,6 +294,7 @@ def main():
 
             remove_events=dict(
                 type="list",
+                elements="str",
 
             ),
 

@@ -403,6 +403,7 @@ def main():
 
             maintainers=dict(
                 type="list",
+                elements="str",
 
             ),
 
@@ -445,6 +446,7 @@ def main():
 
             repo_names=dict(
                 type="list",
+                elements="str",
 
             ),
 

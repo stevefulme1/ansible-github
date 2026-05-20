@@ -371,6 +371,7 @@ def main():
 
             required_contexts=dict(
                 type="list",
+                elements="str",
 
             ),
 
