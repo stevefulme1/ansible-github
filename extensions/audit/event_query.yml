@@ -1,0 +1,65 @@
+---
+stevefulme1.github.*:
+  query: >-
+    (
+      {
+        "resourcetype": "Category",
+        "Action Runner": "Compute",
+        "Runner Group": "Governance & Operations",
+        "Deployment": "DevOps",
+        "Environment": "DevOps",
+        "Environment Secret": "Security",
+        "Environment Variable": "Governance & Operations",
+        "Action Secret": "Security",
+        "Action Variable": "Governance & Operations",
+        "Dependabot Secret": "Security",
+        "Repository Hook": "App Integration & Messaging",
+        "Organization Hook": "App Integration & Messaging",
+        "Team": "Governance & Operations",
+        "Repository Collaborator": "Security",
+        "Issue Label": "Governance & Operations",
+        "Autolink": "App Integration & Messaging"
+      } as $mapping |
+      (.runner // .runner_group // .deployment // .environment // .secret // .variable // .hook // .team // .collaborator // .label // .autolink // .) |
+      (if type=="array" then .[] else if type=="object" then . else empty end end) as $data |
+      select($data.id != null or $data.name != null) |
+      (
+        if $data.id != null and ($data.runner_group_id != null or $data.os != null or $data.status != null or $data.busy != null) then "Action Runner"
+        elif $data.runner_group_id != null or ($data.name != null and $data.runners_url != null) then "Runner Group"
+        elif $data.deployment_id != null or ($data.id != null and ($data.sha != null or $data.ref != null or $data.task != null)) then "Deployment"
+        elif $data.environment_id != null or ($data.name != null and $data.deployment_branch_policy != null) then "Environment"
+        elif $data.secret_name != null and $data.repository_id != null and $data.environment_name != null then "Environment Secret"
+        elif $data.variable_name != null and $data.repository_id != null and $data.environment_name != null then "Environment Variable"
+        elif $data.secret_name != null and $data.repository_id != null and $data.dependabot != null then "Dependabot Secret"
+        elif $data.secret_name != null and $data.repository_id != null then "Action Secret"
+        elif $data.variable_name != null and $data.repository_id != null then "Action Variable"
+        elif $data.hook_id != null and $data.organization != null then "Organization Hook"
+        elif $data.hook_id != null and $data.repository != null then "Repository Hook"
+        elif $data.team_id != null or ($data.id != null and $data.slug != null and $data.organization != null) then "Team"
+        elif $data.collaborator_id != null or ($data.login != null and $data.permissions != null) then "Repository Collaborator"
+        elif $data.label_id != null or ($data.id != null and $data.color != null) then "Issue Label"
+        elif $data.autolink_id != null or ($data.id != null and $data.key_prefix != null) then "Autolink"
+        else "Action Runner"
+        end
+      ) as $node_type |
+      (
+        if $data.repository != null then $data.repository
+        elif $data.organization != null then $data.organization
+        elif $data.environment_name != null then $data.environment_name
+        else "github"
+        end
+      ) as $sub_node_type |
+      {
+        name: ($data.id // $data.name // $data.login // $data.hook_id // $data.secret_name // $data.variable_name),
+        canonical_facts: {
+          name: ($data.name // $data.login // $data.slug // "UNKNOWN"),
+          id: ($data.id // $data.node_id // $data.hook_id // $data.team_id),
+          node_type: $node_type
+        },
+        facts: {
+          infra_type: "SaaS",
+          infra_bucket: ($mapping[$node_type] // "UNKNOWN"),
+          device_type: $sub_node_type
+        }
+      }
+    )

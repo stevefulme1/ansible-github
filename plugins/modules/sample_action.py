@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # sample_action.py
 # GNU General Public License v3.0+
 
